@@ -1,0 +1,67 @@
+Nama Penyusun:
+Brayen Syahputra
+
+PANDUAN IMPLEMENTASI DAN PENGGUNAAN SIFASKA (Sistem Pengelolaan Inventaris dan Peminjaman Fasilitas Akademik Universitas Muhammadiyah Sorong Berbasis Website)
+
+1. PERSIAPAN LINGKUNGAN
+   - Pastikan aplikasi XAMPP telah terinstal di komputer Anda.
+   - Buka XAMPP Control Panel dan jalankan (Start) modul:
+     - Apache (Web Server)
+     - MySQL (Database Server)
+   - Pastikan komputer terhubung ke internet saat membuka aplikasi (karena UI mengambil aset dari CDN Tailwind CSS).
+
+2. KONFIGURASI DATABASE
+   - Buka browser dan kunjungi: http://localhost/phpmyadmin/
+   - Buka menu/tab "SQL", lalu salin seluruh teks dari file `database.sql` dan tempel (paste) ke kolom yang tersedia.
+   - Klik tombol "Kirim" (Go). Database `sifaska_pwm` beserta tabel bawaan akan otomatis terbentuk.
+
+3. PENEMPATAN FILE
+   - Pindahkan folder proyek ini ke dalam direktori "htdocs" XAMPP (umumnya di C:\xampp\htdocs\).
+   - Perhatikan nama folder proyek Anda (contohnya: "sifaska-pwm").
+
+4. MENJALANKAN APLIKASI
+   - Buka browser pilihan Anda.
+   - Akses URL berikut: http://localhost/sifaska-pwm/ (Sesuaikan apabila Anda mengganti nama folder).
+
+5. HAK AKSES DAN AKUN PENGGUNA
+   a. Mahasiswa (Pemohon Fasilitas)
+      - Membuat pengajuan peminjaman barang/ruangan dan melacak statusnya.
+      - Mahasiswa dapat mendaftar sendiri dengan menekan tombol "Daftar disini" pada halaman Login.
+
+   b. Aktor Persetujuan (Kaprodi, Dekan, Staff/Pengurus Fakultas)
+      - Melakukan evaluasi, menyetujui, atau menolak permohonan peminjaman dari Mahasiswa.
+      - Akun untuk peran ini didaftarkan secara manual ke dalam sistem.
+
+6. AKUN PENGGUNA DAN HAK AKSES SISTEM (SAMPEL DATA)
+- Role: dekan
+  Nama: Dekan Fakultas Teknik
+  Username: dekan_user
+  Password: password123
+
+- Role: pengurus_fakultas
+  Nama: Staff Fakultas Teknik
+  Username: pengurus_fakultas_user
+  Password: password123
+
+- Role: mahasiswa
+  Nama: Brayen Syahputra
+  Username: mahasiswa_user
+  Password: password123
+  Fakultas / Prodi: Teknik / Teknik Informatika
+
+- Role: kaprodi
+  Nama: Kaprodi Teknik Informatika
+  Username: kaprodi_user
+  Password: password123
+
+7. FITUR REAL-TIME PUSH NOTIFICATION - FIREBASE CLOUD MESSAGING (FCM)
+   - Sesuai Bab 2.3.12 Seminar Proposal Skripsi, SIFASKA dilengkapi dengan modul Firebase Cloud Messaging (FCM) untuk pengiriman pesan dan pemberitahuan secara real-time.
+   - Cara Menguji Notifikasi FCM (Untuk Demo Sidang Skripsi / Seminar Proposal):
+     1. Login menggunakan akun apapun (misalnya `mahasiswa_user` atau `dekan_user`).
+     2. Klik ikon lonceng (Bell) floating di pojok kanan bawah pada halaman Dashboard untuk membuka **Pusat Notifikasi Real-Time FCM**.
+     3. Pada bagian **Uji Coba Kirim Notifikasi (Demo Sidang)**, klik salah satu skenario simulasi:
+        - *Simulasi 1: Pengajuan Disetujui (Kaprodi/Dekan)*
+        - *Simulasi 2: Pengajuan Ditolak (Jadwal Bentrok)*
+        - *Simulasi 3: Pengingat Waktu Pengembalian Aset*
+     4. Notifikasi akan langsung muncul sebagai **Toast Pop-Up Real-Time** dengan animasi serta memicu notifikasi desktop browser Windows (jika izin notifikasi diaktifkan di browser).
+   - Riwayat notifikasi disimpan dalam tabel `notifications` dan token perangkat disimpan di tabel `fcm_tokens`.
