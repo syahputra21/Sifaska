@@ -6,7 +6,7 @@ CREATE TABLE users (
     nama VARCHAR(100) NOT NULL,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    role ENUM('admin', 'dekan', 'pengurus_fakultas', 'mahasiswa', 'kaprodi') DEFAULT 'mahasiswa',
+    role ENUM('dekan', 'pengurus_fakultas', 'mahasiswa', 'kaprodi') DEFAULT 'mahasiswa',
     fakultas VARCHAR(100) NULL,
     prodi VARCHAR(100) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -39,13 +39,6 @@ CREATE TABLE loans (
     FOREIGN KEY (item_id) REFERENCES items(id) ON DELETE CASCADE
 );
 
-INSERT INTO users (nama, username, password, role)
-VALUES (
-    'Administrator',
-    'admin',
-    '$2y$10$1nX6sEPuejPm6Qcnr2sfLe7mJ.9M0cQ14p/K9v.uUBCz70xu//zt2',
-    'admin'
-);
 
 INSERT INTO items (nama_barang, kategori, stok) VALUES
 ('Proyektor Epson', 'Elektronik', 5),
