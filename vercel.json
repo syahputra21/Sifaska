@@ -1,14 +1,13 @@
 {
-  "version": 2,
   "functions": {
-    "**/*.php": {
-      "runtime": "vercel-php@0.9.0"
-    }
-  },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
+    "api/*.php": { "runtime": "vercel-php@0.9.0" },
+    "auth/*.php": { "runtime": "vercel-php@0.9.0" },
+    "config/*.php": { "runtime": "vercel-php@0.9.0" },
+    "dekan/*.php": { "runtime": "vercel-php@0.9.0" },
+    "includes/*.php": { "runtime": "vercel-php@0.9.0" },
+    "kaprodi/*.php": { "runtime": "vercel-php@0.9.0" },
+    "mahasiswa/*.php": { "runtime": "vercel-php@0.9.0" },
+    "pengurus_fakultas/*.php": { "runtime": "vercel-php@0.9.0" },
+    "*.php": { "runtime": "vercel-php@0.9.0" }
+  }
 }
