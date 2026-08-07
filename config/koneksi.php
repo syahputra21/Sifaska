@@ -23,7 +23,7 @@ if ($server_name === 'localhost' || strpos($server_name, '127.0.0.1') !== false 
     $host = getenv('DB_HOST') ?: "gateway01.ap-southeast-1.prod.aws.tidbcloud.com";
     $user = getenv('DB_USER') ?: "8FTqSgRhjRIuKBv.root";
     $pass = getenv('DB_PASS') ?: "9sA2m7pXMSAZJHKL";
-    $db   = getenv('DB_NAME') ?: "sifaska_pwm";
+    $db   = getenv('DB_NAME') ?: "test";
     $port = intval(getenv('DB_PORT') ?: 4000);
 }
 
